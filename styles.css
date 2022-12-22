@@ -10,7 +10,8 @@
     --dark-bg-color: #111116;
     --light-bg-color: #1C1C24;
     --lighter-bg-color: #21212B;
-    --gradient-left: #86fde8;
+    --gradient-left: #13FBFD;
+    --todo-list-left: #13FBFD;
     --gradient-right: #F76BFB;
     --main-font-color: white;
     --sub-font-color: rgb(246, 224, 224);
@@ -167,6 +168,7 @@
 
 .task-list-title {
     font-size: var(--list-of-list-title-size);
+    color: var(--todo-list-left);
 }
 
 .task-list {
@@ -174,6 +176,7 @@
     font-size: var(--list-of-list-list-size);
     list-style: "|  ";
     font-weight: var(--light-weight-bold);
+    color: var(--todo-list-left);
 }
 
 .list-title {
