@@ -15,22 +15,16 @@
     --main-font-color: white;
     --sub-font-color: rgb(246, 224, 224);
     --button-hover: #F76BFB;
+    --list-of-list-title-size: 2rem;
+    --list-of-list-list-size: 1.3rem;
+    --todo-list-font-size: 2rem;;
+    --todo-list-list-size: 1.3rem;
     /* background: -webkit-linear-gradient(to right, #86fde8, #acb6e5); */
     /* background: linear-gradient(to right, #86fde8, #acb6e5); #acb6e5*/
     
 }
 
-body {
-    background-color: var(--dark-bg-color);
-    display: grid;
-    grid:
-        "placeholder for timers" auto
-        "navigation bar" auto
-        "...... lists active ......" auto
-        1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
 
-
-}
 
 .navbar {
     background: var(--light-bg-color);
@@ -133,6 +127,59 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+/*TODO-LIST CSS*/
+
+.todo {
+    background-color: var(--dark-bg-color);
+    display: grid;
+    grid:
+        "...... lists active ......" auto/
+        1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+}
+
+.all-tasks {
+    grid-area: lists;
+}
+
+.todo-list {
+    grid-area: active;
+}
+
+.all-tasks {
+    color: var(--main-font-color);
+    
+}
+
+.task-list-title {
+    font-size: var(--list-of-list-title-size);
+}
+
+.task-list {
+    font-size: var(--list-of-list-list-size);
+}
+
+.list-title {
+    font-size: var(--todo-list-font-size);
+    color: var(--main-font-color);
+}
+
+.task-count {
+    font-size: var(--todo-list-list-size);
+    color: var(--main-font-color);
+}
+
+.tasks {
+    font-size: var(--todo-list-list-size);
+    color: var(--main-font-color);
+}
 
 
 @media screen and (max-width: 960px) {
