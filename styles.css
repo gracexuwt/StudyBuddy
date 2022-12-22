@@ -7,9 +7,9 @@
 }
 
 :root {
-    --dark-bg-color: #000000;
-    --light-bg-color: #211F29;
-    --lighter-bg-color: #36343e;
+    --dark-bg-color: #111116;
+    --light-bg-color: #1C1C24;
+    --lighter-bg-color: #21212B;
     --gradient-left: #86fde8;
     --gradient-right: #F76BFB;
     --main-font-color: white;
@@ -20,6 +20,17 @@
     
 }
 
+body {
+    background-color: var(--dark-bg-color);
+    display: grid;
+    grid:
+        "placeholder for timers" auto
+        "navigation bar" auto
+        "...... lists active ......" auto
+        1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+
+
+}
 
 .navbar {
     background: var(--light-bg-color);
@@ -119,6 +130,9 @@
     color: var(--main-font-color);
     background: var(--dark-bg-color);
 }
+
+
+
 
 
 @media screen and (max-width: 960px) {
