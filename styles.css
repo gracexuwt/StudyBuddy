@@ -24,6 +24,7 @@
     --todo-list-list-size: 1.3rem;
     --todo-list-line-height: 1.7;
 
+    --light-weight-bold: 700;
     
     /* background: -webkit-linear-gradient(to right, #86fde8, #acb6e5); */
     /* background: linear-gradient(to right, #86fde8, #acb6e5); #acb6e5*/
@@ -171,6 +172,8 @@
 .task-list {
     line-height: var(--list-of-list-line-height);
     font-size: var(--list-of-list-list-size);
+    list-style: "|  ";
+    font-weight: var(--light-weight-bold);
 }
 
 .list-title {
