@@ -37,14 +37,43 @@
     <div class="hero" id="timers">
         <div class="hero__container">
             <h1 class="hero__heading">
-                Placeholder for timers
+                Study Timer
             </h1>
-            <p class="hero__description">literlly, placeholdering 
-                <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding 
-                <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding
-                <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding
-                <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding <br> holding
-                <br> holding <br> holding <br> holding 
+            <p class="hero__description">
+                <br> <br>  <br>  <br>  <br> <br>  <br> 
+                <main class="app">
+                    <div class="timer">
+                      <div class="button-group mode-buttons" id="js-mode-buttons">
+                        <button
+                          data-mode="study"
+                          class="button active mode-button"
+                          id="js-pomodoro"
+                        >
+                          Study time
+                        </button>
+                        <button
+                          data-mode="shortBreak"
+                          class="button mode-button"
+                          id="js-short-break"
+                        >
+                          Short break
+                        </button>
+                      </div>
+                      <div class="clock" id="js-clock">
+                        <span id="js-minutes">25</span>
+                        <span class="separator">:</span>
+                        <span id="js-seconds">00</span>
+                      </div>
+                      <button class="main-button" data-action="start" id="js-btn">
+                        Start
+                      </button>
+                    </div>
+                  </main>
+                <br> <br> <br> <br> <br> <br> <br> 
+                <br> <br> <br> <br> <br> <br> <br> 
+                <br> <br> <br> <br> <br> <br> <br> 
+                <br> <br> <br> <br> <br> <br> <br> 
+
             </p>
         </div>
     </div>
@@ -155,6 +184,7 @@
         </div>
     </div>
     <script src="menu.js"></script>
+    <script src="pomodoro.js"></script>
 
 </body>
 </html>

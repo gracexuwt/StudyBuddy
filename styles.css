@@ -297,8 +297,8 @@
 /*POMODORO CSS*/
 .timer {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 35%;
+    left: 30%;
     transform: translate(-50%, -50%);
     padding: 20px;
     text-align: center;
@@ -307,7 +307,7 @@
 .clock {
     margin-top: 50px;
     margin-bottom: 30px;
-    font-size: 15rem;
+    font-size: 12rem;
     line-height: 1;
     display: flex;
     align-items: center;
