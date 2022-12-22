@@ -15,10 +15,16 @@
     --main-font-color: white;
     --sub-font-color: rgb(246, 224, 224);
     --button-hover: #F76BFB;
+
+    
     --list-of-list-title-size: 2rem;
     --list-of-list-list-size: 1.3rem;
-    --todo-list-font-size: 2rem;;
+    --list-of-list-line-height: 1.7;
+    --todo-list-font-size: 2rem;
     --todo-list-list-size: 1.3rem;
+    --todo-list-line-height: 1.7;
+
+    
     /* background: -webkit-linear-gradient(to right, #86fde8, #acb6e5); */
     /* background: linear-gradient(to right, #86fde8, #acb6e5); #acb6e5*/
     
@@ -163,6 +169,7 @@
 }
 
 .task-list {
+    line-height: var(--list-of-list-line-height);
     font-size: var(--list-of-list-list-size);
 }
 
@@ -177,6 +184,7 @@
 }
 
 .tasks {
+    line-height: var(--todo-list-line-height);
     font-size: var(--todo-list-list-size);
     color: var(--main-font-color);
 }
