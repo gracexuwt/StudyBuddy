@@ -9,6 +9,7 @@
 :root {
     --dark-bg-color: #000000;
     --light-bg-color: #211F29;
+    --lighter-bg-color: #36343e;
     --gradient-left: #86fde8;
     --gradient-right: #F76BFB;
     --main-font-color: white;
@@ -28,7 +29,7 @@
     align-items: center;
     font-size: 1.2rem;
     position: sticky;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .navbar__container {
@@ -49,13 +50,13 @@
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
     display: flex;
     align-items: center;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
     font-weight: bold;
-    z-index: 999;
 }
 
 
@@ -132,29 +133,22 @@
         position: absolute;
         top: -1000px;
         opacity: 1;
-        transition: all 0.5s at ease;
-        z-index: 1;
-        background: var(--dark-bg-color);
-    }
+        transition: all 0.5s ease;
+        z-index: -1;
+      }
 
     .navbar__menu.active {
-        background: var(--dark-bg-color);
-        /*border: #86fde8;
-        border-radius: 3rem;*/
+        background: var(--lighter-bg-color);
         top: 100%;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 99;
         height: 60vh;
         font-size: 1.6rem;
-
     }
 
     #navbar__logo {
         padding-left: 50px;
-        background-color: var(--gradient-left);
-        background-image: linear-gradient(to right, var(--gradient-left) 0%, var(--gradient-right) 100%);
-        background-size: 100%;
     }
 
     .navbar__toggle .bar{
@@ -193,7 +187,7 @@
         position: absolute;
         top: 20%;
         right: 5%;
-        transform: translate (5%, 20%);
+        transform: translate(5%, 20%);
     }
 
     .navbar__toggle .bar {
