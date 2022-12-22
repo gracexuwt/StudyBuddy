@@ -114,6 +114,12 @@
     transition: all 0.3s ease;
 }
 
+.hero__container {
+    color: var(--main-font-color);
+    background: var(--dark-bg-color);
+}
+
+
 @media screen and (max-width: 960px) {
     .navbar__container {
         display: flex;
