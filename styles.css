@@ -253,6 +253,13 @@
     color: var(--button-hover);
 }
 
+.btn.task::after{
+    content: "";
+    position: absolute;
+
+    height: 0px;
+}
+
 
 .btn.delete {
     cursor: pointer;
@@ -310,7 +317,6 @@
 [type="checkbox"] {
     opacity: 0%;
     position: absolute;
-    transition: all 0.3s ease-in-out;
 }
 
 
@@ -324,7 +330,7 @@
     border: 2px solid currentColor;
     margin-right: var(--size);
     transform: scale(1);
-    transition: transform 200ms ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 .task:hover .custom-checkbox{
@@ -335,7 +341,7 @@
     display: inline-flex;
     align-items: center;
     position: relative;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .task {
@@ -353,7 +359,10 @@
     color: var(--gradient-right);
     height: 1px;
     background: currentColor;
+    transition: all 0.2s ease-in-out;
 }
+
+
 
 .task label::after{
     content: "";
@@ -365,7 +374,7 @@
     background: currentColor;
     transform: scaleX(0);
     transform-origin: left;
-    transition: all 0.3s ease-in-out;
+    
 }
 
 /* action checks */
@@ -382,6 +391,14 @@
 
 [type="checkbox"]:checked + label::after{
     transform: scaleX(1);
+}
+
+/*
+ ///////// the delete buttons /////////
+*/
+.delete-items {
+    display: flex;
+    justify-content: space-between;
 }
 
 
