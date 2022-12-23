@@ -90,6 +90,14 @@ function startTimer() {
       if (total <= 0) {
         clearInterval(interval);
 
+        switch (timer.mode) {
+          case 'study':
+            switchMode('shortBreak');
+            break;
+          default:
+            switchMode('study');
+        }
+
         alarmSound.play();
         if (Notification.permission === 'granted') {
             const text =
