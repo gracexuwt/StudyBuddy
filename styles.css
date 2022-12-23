@@ -19,7 +19,7 @@
 
     
     --list-of-list-title-size: 2rem;
-    --list-of-list-list-size: 1.3rem;
+    --list-of-list-list-size: 1.1rem;
     --list-of-list-line-height: 1.7;
     --todo-list-font-size: 2rem;
     --todo-list-list-size: 1.3rem;
@@ -150,11 +150,12 @@
     display: grid;
     grid:
         "...... lists active ......" auto/
-        1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+        1fr minmax(150px, 350px) minmax(300px, 600px) 1fr;
 }
 
 .all-tasks {
     grid-area: lists;
+    padding: 3rem;
 }
 
 .todo-list {
@@ -183,10 +184,11 @@
 .list-title {
     font-size: var(--todo-list-font-size);
     color: var(--main-font-color);
+    margin: 0 1rem 0 0;
 }
 
 .task-count {
-    font-size: var(--todo-list-list-size);
+    font-size: 1.1rem;
     color: var(--main-font-color);
 }
 
@@ -262,21 +264,34 @@
     color: var(--button-hover);
 }
 
+.list-name {
+    transition: all 0.3s ease-in-out;
+}
 
+.list-name:hover {
+    color: var(--button-hover);
+    cursor: pointer;
+}
 /* todo-list custom checkbox area */
 .todo-list {
     --spacer: 2rem;
     
 
     grid-area: active;
-    background-image: url("todobackground1.jpg");
+    background-image: url("todobackground.png");
     background-size: 100%;
     border-radius: 2rem;
+    
 
 }
 
+
+
 .todo-header {
     padding: var(--spacer);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .todo-body {
@@ -291,8 +306,86 @@
 /*TODO-LIST CSS ends*/
 
 
+/* hiding the check box */
+[type="checkbox"] {
+    opacity: 0%;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
 
 
+/* custom checkbox */
+.custom-checkbox {
+    --size: 0.75em;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    margin-right: var(--size);
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+
+.task:hover .custom-checkbox{
+    transform: scale(1.1);
+    
+}
+.task label{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.task {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.task::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -0.3em;
+    opacity: 0.3;
+    color: var(--gradient-right);
+    height: 1px;
+    background: currentColor;
+}
+
+.task label::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 1.5em;
+    color: var(--gradient-right);
+    height: 3px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.3s ease-in-out;
+}
+
+/* action checks */
+[type="checkbox"]:checked + label .custom-checkbox {
+    background: var(--gradient-right);
+    border-color: var(--gradient-right);
+    opacity: 0.5;
+
+}
+
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+
+[type="checkbox"]:checked + label::after{
+    transform: scaleX(1);
+}
+
+
+/*TODO-LIST CSS ends*/
 @media screen and (max-width: 960px) {
     .navbar__container {
         display: flex;
