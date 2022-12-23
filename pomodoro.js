@@ -1,6 +1,6 @@
 const timer = {
     study: 25,
-    shortBreak: 1,
+    shortBreak: 5,
 };
   
 let interval;
