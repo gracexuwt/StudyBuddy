@@ -263,6 +263,31 @@
 }
 
 
+/* todo-list custom checkbox area */
+.todo-list {
+    --spacer: 2rem;
+    
+
+    grid-area: active;
+    background-image: url("todobackground1.jpg");
+    background-size: 100%;
+    border-radius: 2rem;
+
+}
+
+.todo-header {
+    padding: var(--spacer);
+}
+
+.todo-body {
+    padding-bottom: var(--spacer);
+    padding-left: var(--spacer);
+    padding-right: var(--spacer);
+}
+
+
+/* todo-list custom checkbox area ends*/
+
 /*TODO-LIST CSS ends*/
 
 
