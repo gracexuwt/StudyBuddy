@@ -197,13 +197,32 @@
 }
 
 .new {
-    background-color: var(--todo-list-left);
-    opacity: 0.3;
+    background: transparent;
     color: var(--main-font-color);
-    border: 0;
-    border-bottom: 1px split currentColor;
-    
+    border-radius: 1rem;
+    border-color: var(--todo-list-left);
+    font-size: inherit;
+    padding-left: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-right: 1rem;
+    transition: all 0.3s ease-in-out;
 }
+
+.new:hover {
+    border-color: var(--gradient-right);
+}
+
+.new:focus::placeholder {
+    opacity: 0.5;
+    border-color: var(--gradient-right);
+}
+
+.new::placeholder {
+    opacity: 1;
+    color: var(--main-font-color);
+}
+
 
 
 /*TODO-LIST CSS ends*/
