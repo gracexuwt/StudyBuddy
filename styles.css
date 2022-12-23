@@ -196,6 +196,16 @@
     color: var(--main-font-color);
 }
 
+.new {
+    background-color: var(--todo-list-left);
+    opacity: 0.3;
+    color: var(--main-font-color);
+    border: 0;
+    border-bottom: 1px split currentColor;
+    
+}
+
+
 /*TODO-LIST CSS ends*/
 
 
