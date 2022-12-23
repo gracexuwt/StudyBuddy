@@ -1,11 +1,12 @@
 const timer = {
     study: 25,
-    shortBreak: 5,
+    shortBreak: 1,
 };
   
 let interval;
   
 const clickSound = new Audio('button-sound.mp3');
+const alarmSound = new Audio('alarm-sound.wav');
 
 const mainButton = document.getElementById('js-btn');
 mainButton.addEventListener('click', () => {
@@ -88,7 +89,8 @@ function startTimer() {
       total = timer.remainingTime.total;
       if (total <= 0) {
         clearInterval(interval);
-        
+
+        alarmSound.play();
         if (Notification.permission === 'granted') {
             const text =
               timer.mode === 'study' ? 'You have studied a while, take a break!' : 'Break is over, time to study!';
