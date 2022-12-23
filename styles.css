@@ -488,7 +488,7 @@
 .timer {
     position: absolute;
     top: 38%;
-    left: 68%;
+    left: 75%;
     transform: translate(-50%, -50%);
     padding: 20px;
     text-align: center;
@@ -565,8 +565,8 @@ button:focus, button:active {
 /*STOPWATCH CSS*/
 .stopwatch {
     position: absolute;
-    top: 41%;
-    left: 25%;
+    top: 43%;
+    left: 28%;
     transform: translate(-50%, -50%);
     padding: 20px;
     text-align: center;
@@ -574,7 +574,7 @@ button:focus, button:active {
 .watch {
     margin-top: 50px;
     margin-bottom: 30px;
-    font-size: 12rem;
+    font-size: 10rem;
     line-height: 1;
     display: flex;
     align-items: center;
