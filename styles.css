@@ -541,7 +541,6 @@
   
 .main-button {
     cursor: pointer;
-    box-shadow: rgb(235, 235, 235) 0px 6px 0px;
     font-size: 22px;
     height: 55px;
     text-transform: uppercase;
@@ -562,8 +561,6 @@ button:focus, button:active {
 }
   
 .main-button.active {
-    transform: translateY(6px);
-    box-shadow: none;
     outline: none;
 }
   
