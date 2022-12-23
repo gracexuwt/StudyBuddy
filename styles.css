@@ -177,6 +177,7 @@
     list-style: "|  ";
     font-weight: var(--light-weight-bold);
     color: var(--todo-list-left);
+    padding-left: 1.1rem;
 }
 
 .list-title {
@@ -194,6 +195,10 @@
     font-size: var(--todo-list-list-size);
     color: var(--main-font-color);
 }
+
+/*TODO-LIST CSS ends*/
+
+
 
 
 @media screen and (max-width: 960px) {
