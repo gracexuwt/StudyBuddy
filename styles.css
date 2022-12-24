@@ -256,7 +256,7 @@
 .btn.task::after{
     content: "";
     position: absolute;
-
+    transition: all 0.3s ease-in-out;
     height: 0px;
 }
 
@@ -282,7 +282,7 @@
 /* todo-list custom checkbox area */
 .todo-list {
     --spacer: 2rem;
-    
+    transition: all 0.3s ease-in-out;
 
     grid-area: active;
     background-image: url("todobackground.png");
@@ -330,7 +330,7 @@
     border: 2px solid currentColor;
     margin-right: var(--size);
     transform: scale(1);
-    transition: transform 0.1s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .task:hover .custom-checkbox{
@@ -341,7 +341,7 @@
     display: inline-flex;
     align-items: center;
     position: relative;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .task {
@@ -374,7 +374,7 @@
     background: currentColor;
     transform: scaleX(0);
     transform-origin: left;
-    
+    transition: all 0.15s ease-in-out;
 }
 
 /* action checks */
