@@ -8,6 +8,8 @@ const listTitleElement = document.querySelector('[data-list-title]')
 const listCountElement = document.querySelector('[data-list-count]')
 const tasksContainer = document.querySelector('[data-tasks]')
 const taskTemplate = document.getElementById('task-template')
+const newTaskForm = document.querySelector('[data-new-task-form]')
+const newTaskInput = document.querySelector('[data-new-task-input]')
 
 const LOCAL_STOARGE_LIST_KEY = 'task.lists'
 const LOCAL_STOARGE_SELECTED_LIST_ID_KEY = 'task.selectedListID'
@@ -66,6 +68,18 @@ newListForm.addEventListener('submit', e => {
     const list = createList(listName)
     newListInput.value = null
     lists.push(list)
+    saveAndRender()
+})
+
+
+newTaskForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const taskName = newTaskInput.value
+    if (taskName == null || taskName === "") return
+    const task = createTask(taskName)
+    newTaskInput.value = null
+    const selectedList = lists.find(list => list.id === selectedListID)
+    selectedList.tasks.push(task)
     saveAndRender()
 })
 
@@ -135,8 +149,13 @@ function clearElement(element) {
 function createList(name) {
     return {id: Date.now().toString(), 
             name: name,
-            tasks: [{id: 'asdads', name: 'Test', complete: true}]}
+            tasks: []}
 }
 
+function createTask(name) {
+    return {id: Date.now().toString(), 
+            name: name,
+            complete: false}
+}
 
 render()
