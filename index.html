@@ -72,12 +72,16 @@
                   <main class="stopwatch">
                     <div class="stopper">
                       <div class="watch">
-                        00:00:00
+                        <span id="sw-hours">00</span>
+                        <span class="separator">:</span>
+                        <span id="sw-minutes">00</span>
+                        <span class="separator">:</span>
+                        <span id="sw-seconds">00</span>
                      </div>
-                      <button class="main-button" data-action="startWatch" id="js-btn">
+                      <button class="main-button" data-action="startWatch" id="sw-btn">
                         Start
                       </button>
-                      <button class="main-button" data-action="resetWatch" id="js-btn">
+                      <button class="main-button" data-action="resetWatch" id="sw-rst">
                         Reset
                       </button>
                     </div>

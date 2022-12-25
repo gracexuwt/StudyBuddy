@@ -14,6 +14,11 @@ mainButton.addEventListener('click', () => {
         pauseWatch();
     }
 });
+document.getElementById('sw-rst').addEventListener('click', ()=>{
+    clickSound.play();
+    clearInterval(interval);
+    timer = 0;
+});
 
 function updateWatch() {
     const { remainingTime } = timer;
@@ -39,7 +44,7 @@ function startWatch() {
   
     interval = setInterval(function() {
       timer.remainingTime = getTime(endTime);
-      updateTimer();
+      updateWatch();
   
       total = timer.remainingTime.total;
     }, 1000);
@@ -54,7 +59,7 @@ function pauseWatch(){
 
 function getTime(endTime) {
     const currentTime = Date.parse(new Date());
-    const difference = endTime - currentTime;
+    const difference = currentTime - endTime;
   
     const total = Number.parseInt(difference / 1000, 10);
     const hours = Number.parseInt(total % 3600, 10);
