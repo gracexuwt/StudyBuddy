@@ -99,7 +99,7 @@ clearCompleteTaskButton.addEventListener('click', e => {
     const selectedList = lists.find(list => list.id === selectedListID)
     //change the task list into a list that, through filter, only
     //have the incomplete tasks left
-    selectedList.task = selectedList.tasks.filter(task => !task.complete)
+    selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
     saveAndRender()
 })
 
