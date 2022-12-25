@@ -1,75 +1,48 @@
-const timer = 0;
-const clickSound = new Audio('button-sound.mp3');
 
-let interval;
+let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+let watch = document.querySelector('.watch');
+let Interval;
 
-const mainButton = document.getElementById('sw-btn');
-mainButton.addEventListener('click', () => {
-    clickSound.play();
-    const { action } = mainButton.dataset;
-    if (action === 'startWatch') {
-        startWatch();
+const clis = new Audio('button-sound.mp3');
+
+document.getElementById('sw-btn').addEventListener('click', ()=>{
+    clis.play();
+    if(Interval!==null){
+        clearInterval(Interval);
     }
-    else{
-        pauseWatch();
-    }
+    Interval = setInterval(startWatch,10);
 });
+
+document.getElementById('sw-ps').addEventListener('click', ()=>{
+    clis.play();
+    clearInterval(Interval);
+});
+
 document.getElementById('sw-rst').addEventListener('click', ()=>{
-    clickSound.play();
-    clearInterval(interval);
-    timer = 0;
+    clis.play();
+    clearInterval(Interval);
+    [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+    watch.innerHTML = '00:00:00';
 });
 
-function updateWatch() {
-    const { remainingTime } = timer;
-    const hours = `${remainingTime.hours}`.padStart(2, '0')
-    const minutes = `${remainingTime.minutes}`.padStart(2, '0');
-    const seconds = `${remainingTime.seconds}`.padStart(2, '0');
-  
-    const hs = document.getElementById('sw-hours');
-    const min = document.getElementById('sw-minutes');
-    const sec = document.getElementById('sw-seconds');
-    hs.textContent = hours;
-    min.textContent = minutes;
-    sec.textContent = seconds;
-}
+function startWatch(){
+    milliseconds+=10;
+    if(milliseconds == 1000){
+        milliseconds = 0;
+        seconds++;
+        if(seconds == 60){
+            seconds = 0;
+            minutes++;
+            if(minutes == 60){
+                minutes = 0;
+                hours++;
+            }
+        }
+    }
 
-function startWatch() {
-    let { total } = timer.remainingTime;
-    const endTime = Date.parse(new Date()) + total * 1000;
-  
-    mainButton.dataset.action = 'stop';
-    mainButton.textContent = 'pause';
-    mainButton.classList.add('active');
-  
-    interval = setInterval(function() {
-      timer.remainingTime = getTime(endTime);
-      updateWatch();
-  
-      total = timer.remainingTime.total;
-    }, 1000);
-}
+ let hrs = hours < 10 ? "0" + hours : hours; // If 0-9 return "0" + hours, if >=10 then return hours
+ let min = minutes < 10 ? "0" + minutes : minutes;
+ let sec = seconds < 10 ? "0" + seconds : seconds;
 
-function pauseWatch(){
-    clearInterval(interval);
-    mainButton.dataset.action = 'startWatch';
-    mainButton.textContent = 'startWatch';
-    mainButton.classList.remove('active');
-}
-
-function getTime(endTime) {
-    const currentTime = Date.parse(new Date());
-    const difference = currentTime - endTime;
-  
-    const total = Number.parseInt(difference / 1000, 10);
-    const hours = Number.parseInt(total % 3600, 10);
-    const minutes = Number.parseInt((total / 60) % 60, 10);
-    const seconds = Number.parseInt(total % 60, 10);
-  
-    return {
-      total,
-      hours,
-      minutes,
-      seconds,
-    };
+ watch.innerHTML = ` ${hrs}:${min}:${sec} `;
 }
