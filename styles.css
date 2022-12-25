@@ -251,6 +251,7 @@
 
 .btn.task:hover {
     color: var(--button-hover);
+    cursor: pointer;
 }
 
 .btn.task::after{
@@ -276,7 +277,7 @@
 }
 
 .list-name:hover {
-    color: var(--button-hover);
+    color: var(--main-font-color);
     cursor: pointer;
 }
 /* todo-list custom checkbox area */
@@ -307,6 +308,9 @@
     padding-right: var(--spacer);
 }
 
+.active-list{
+    color: var(--gradient-right)
+}
 
 /* todo-list custom checkbox area ends*/
 
@@ -335,7 +339,7 @@
 
 .task:hover .custom-checkbox{
     transform: scale(1.1);
-    
+    cursor: pointer;
 }
 .task label{
     display: inline-flex;

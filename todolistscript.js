@@ -1,10 +1,27 @@
 const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')
 const newListInput = document.querySelector('[data-new-list-input]')
+const deleteListButton = document.querySelector('[data-delete-list-button]')
+const deleteTaskButton = document.querySelector('[data-delete-task-button]')
+
+
 const LOCAL_STOARGE_LIST_KEY = 'task.lists'
 const LOCAL_STOARGE_SELECTED_LIST_ID_KEY = 'task.selectedListID'
 let lists = JSON.parse(localStorage.getItem(LOCAL_STOARGE_LIST_KEY)) || []
 let selectedListID = localStorage.getItem(LOCAL_STOARGE_SELECTED_LIST_ID_KEY)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 listsContainer.addEventListener('click', e=> {
     if(e.target.tagName.toLowerCase() === 'li') {
@@ -12,6 +29,13 @@ listsContainer.addEventListener('click', e=> {
         saveAndRender()
     }
 })
+
+deleteListButton.addEventListener('click', e=>{
+    lists = lists.filter(list => list.id !== selectedListID)
+    selectedListID = null
+    saveAndRender();
+})
+
 
 //save the current list into the local storage
 function save(){
