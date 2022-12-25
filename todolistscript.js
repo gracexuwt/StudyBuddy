@@ -10,6 +10,8 @@ const tasksContainer = document.querySelector('[data-tasks]')
 const taskTemplate = document.getElementById('task-template')
 const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
+const clearCompleteTaskButton = document.querySelector('[data-delete-task-button]')
+
 
 const LOCAL_STOARGE_LIST_KEY = 'task.lists'
 const LOCAL_STOARGE_SELECTED_LIST_ID_KEY = 'task.selectedListID'
@@ -91,6 +93,14 @@ tasksContainer.addEventListener('click', e => {
         save()
         renderTaskCount(selectedList)
     }
+})
+
+clearCompleteTaskButton.addEventListener('click', e => {
+    const selectedList = lists.find(list => list.id === selectedListID)
+    //change the task list into a list that, through filter, only
+    //have the incomplete tasks left
+    selectedList.task = selectedList.tasks.filter(task => !task.complete)
+    saveAndRender()
 })
 
 
