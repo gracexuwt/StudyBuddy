@@ -4,6 +4,7 @@ const timer = {
 };
   
 let interval;
+let clock = document.querySelector('.clock');
   
 const clickSound = new Audio('button-sound.mp3');
 const alarmSound = new Audio('alarm-sound.wav');
@@ -50,13 +51,12 @@ function switchMode(mode) {
 
 function updateTimer() {
     const { remainingTime } = timer;
-    const minutes = `${remainingTime.minutes}`.padStart(2, '0');
-    const seconds = `${remainingTime.seconds}`.padStart(2, '0');
-  
-    const min = document.getElementById('js-minutes');
-    const sec = document.getElementById('js-seconds');
-    min.textContent = minutes;
-    sec.textContent = seconds;
+    if(remainingTime.seconds < 10){
+      clock.innerHTML = `${remainingTime.minutes}:0${remainingTime.seconds}`;
+    }
+    else{
+      clock.innerHTML = `${remainingTime.minutes}:${remainingTime.seconds}`;
+    }
 }
   
 function getRemainingTime(endTime) {
