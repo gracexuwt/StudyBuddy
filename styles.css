@@ -510,7 +510,7 @@
 /*POMODORO CSS*/
 .timer {
     position: absolute;
-    top: 40%;
+    top: 42%;
     left: 25%;
     transform: translate(-50%, -50%);
     padding: 20px;
@@ -585,7 +585,7 @@ button:focus, button:active {
 /*STOPWATCH CSS*/
 .stopwatch {
     position: absolute;
-    top: 43%;
+    top: 45%;
     left: 67%;
     transform: translate(-50%, -50%);
     padding: 20px;

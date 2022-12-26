@@ -3,23 +3,38 @@ let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
 let watch = document.querySelector('.watch');
 let Interval;
 
+const mButton = document.getElementById('sw-btn');
 const clis = new Audio('button-sound.mp3');
 
-document.getElementById('sw-btn').addEventListener('click', ()=>{
+mButton.addEventListener('click', ()=>{
     clis.play();
-    if(Interval!==null){
-        clearInterval(Interval);
+    const { action } = mButton.dataset;
+    if (action === 'start') {
+        mButton.dataset.action = 'stop';
+        mButton.textContent = 'pause';
+        mButton.classList.add('active'); 
+        if(Interval!==null){
+            clearInterval(Interval);
+        }
+        Interval = setInterval(startWatch,10);
     }
-    Interval = setInterval(startWatch,10);
-});
-
-document.getElementById('sw-ps').addEventListener('click', ()=>{
-    clis.play();
-    clearInterval(Interval);
+    else{
+        clearInterval(Interval);
+        mButton.dataset.action = 'start';
+        mButton.textContent = 'start';
+        mButton.classList.add('active');   
+    }
+    
 });
 
 document.getElementById('sw-rst').addEventListener('click', ()=>{
     clis.play();
+    const { action1 } = mButton.dataset;
+    if (action1 !== 'start') {
+        mButton.dataset.action = 'start';
+        mButton.textContent = 'start';
+        mButton.classList.add('active');  
+    }
     clearInterval(Interval);
     [milliseconds,seconds,minutes,hours] = [0,0,0,0];
     watch.innerHTML = '00:00:00';
