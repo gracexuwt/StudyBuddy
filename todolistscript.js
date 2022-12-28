@@ -22,15 +22,6 @@ let selectedListID = localStorage.getItem(LOCAL_STOARGE_SELECTED_LIST_ID_KEY)
 
 
 
-
-
-
-
-
-
-
-
-
 listsContainer.addEventListener('click', e=> {
     if(e.target.tagName.toLowerCase() === 'li') {
         selectedListID = e.target.dataset.listId
