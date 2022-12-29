@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyBuddy</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
     <!-- Navigation bar section -->
@@ -183,12 +184,17 @@
           </label>
         </div>
     </template>
-
+    <center>
     <div class="calendar" id="schedule">
       <h1 style="color:white">Event Calendar</h1>
+      <p><br></p>
       <div class="wrapper">
         <header>
           <p class="current-date">January 2023</p>
+          <div class="icons">
+            <span class= "material-symbols-rounded" id="prev">chevron_left</span>
+            <span class= "material-symbols-rounded" id="next">chevron_right</span>
+          </div>
         </header>
         <div class="calendar">
           <ul class="weeks">
@@ -236,10 +242,11 @@
             <li>3</li>
             <li>4</li>
             <li>5</li>
-          </ul>>
+          </ul>
         </div>
       </div>
     </div>
+  </center>
 
 
     <script src="menu.js"></script>

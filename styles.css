@@ -1,6 +1,5 @@
 body{
   background: #111116;
-  justify-content: center;
 }
 
 * {
@@ -609,7 +608,7 @@ button:focus, button:active {
 
 /*CALENDAR CSS*/
 .wrapper{
-    width: 70rem;
+    width: 65rem;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
@@ -624,8 +623,8 @@ button:focus, button:active {
     display: flex;
   }
   header .icons span{
-    height: 38px;
-    width: 38px;
+    height: 2rem;
+    width: 2rem;
     margin: 0 1px;
     cursor: pointer;
     color: #878787;
@@ -642,8 +641,7 @@ button:focus, button:active {
     background: #f2f2f2;
   }
   header .current-date{
-    font-size: 1.45rem;
-    font-weight: 500;
+    font-size: 3rem;
   }
   .calendar{
     padding: 20px;
@@ -655,7 +653,7 @@ button:focus, button:active {
     text-align: center;
   }
   .calendar .days{
-    margin-bottom: 20px;
+    margin-bottom: 4rem;
   }
   .calendar li{
     color: #333;
@@ -670,7 +668,7 @@ button:focus, button:active {
     z-index: 1;
     cursor: pointer;
     position: relative;
-    margin-top: 30px;
+    margin-top: 5rem;
   }
   .days li.inactive{
     color: #aaa;
