@@ -44,7 +44,8 @@ prevNext.forEach(icon => {
         currentMonth = icon.id === "prev" ? currentMonth - 1 : currentMonth + 1;
 
         if(currentMonth < 0 || currentMonth > 11){ //prev year or next year
-            date = new Date(currentYear,currentMonth);
+            today = new Date();
+            date = new Date(currentYear,currentMonth,today.getDate());
             currentYear = date.getFullYear();
             currentMonth = date.getMonth();
         }else{
