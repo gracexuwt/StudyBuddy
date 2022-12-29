@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyBuddy</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
     <!-- Navigation bar section -->
@@ -183,12 +184,17 @@
           </label>
         </div>
     </template>
-
+    <center>
     <div class="calendar" id="schedule">
       <h1 style="color:white">Event Calendar</h1>
+      <p><br></p>
       <div class="wrapper">
         <header>
-          <p class="current-date">January 2023</p>
+          <p class="current-date"></p>
+          <div class="icons">
+            <span class= "material-symbols-rounded" id="prev">chevron_left</span>
+            <span class= "material-symbols-rounded" id="next">chevron_right</span>
+          </div>
         </header>
         <div class="calendar">
           <ul class="weeks">
@@ -209,7 +215,7 @@
             <li>6</li>
             <li>7</li>
             <li>8</li>
-            <li>9</li>
+            <li class="active">9</li>
             <li>10</li>
             <li>11</li>
             <li>12</li>
@@ -231,21 +237,23 @@
             <li>28</li>
             <li>29</li>
             <li>30</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>>
+            <li class="inactive">1</li>
+            <li class="inactive">2</li>
+            <li class="inactive">3</li>
+            <li class="inactive">4</li>
+            <li class="inactive">5</li>
+          </ul>
         </div>
       </div>
     </div>
+  </center>
 
 
     <script src="menu.js"></script>
     <script src="pomodoro.js"></script>
     <script src="stopwatch.js"></script>
     <script src="todolistscript.js"></script>
+    <script src="calendar.js"></script>
 
 </body>
 </html>
