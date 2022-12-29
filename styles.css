@@ -623,8 +623,8 @@ button:focus, button:active {
     display: flex;
   }
   header .icons span{
-    height: 2rem;
-    width: 2rem;
+    height: 3.5rem;
+    width: 3.5rem;
     margin: 0 1px;
     cursor: pointer;
     color: #878787;
