@@ -167,4 +167,15 @@ function createTask(name) {
             complete: false}
 }
 
+
+function readFromServer(){
+
+}
+
+function writeToServer(){
+
+
+}
+
+
 render()
