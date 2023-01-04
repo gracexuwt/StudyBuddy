@@ -1,3 +1,11 @@
+var AWS = require("aws-sdk");
+let awsConfig = {
+    "region": "us-east-1",
+    "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
+    "accessKeyId": "AKIARD6ATKRQDOIDNRP4", 
+    "secretAccessKey": "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"
+};
+AWS.config.update(awsConfig);
 const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')
 const newListInput = document.querySelector('[data-new-list-input]')

@@ -9,30 +9,38 @@ AWS.config.update(awsConfig);
 
 var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
+function createParams(email){
+    const params = {
+        TableName: "StudyBuddy",
+        Key: {
+            "email_id": {S: email}
+        },
+    };
+    return params;
+}
 
-var params = {
-    TableName: "StudyBuddy",
-    Key: {
-        "email_id": {S: "healtoneforever@gmail.com"}
-    },
-    
-};
 
-
-
+var email;
 
 function getProperty(property){
-    let thing;
-    let ye = ddb.getItem(params, function(err, data) {
-        if (err) {
-          console.log("Error", err);
-        } else {
-            console.log("Success", data.Item.email_id.S);
-        }
-      });
-    return ye.getItem;
+    params = createParams("healtoneforever@gmail.com");
+    return item = ddb.getItem(params).promise();
 }
-console.log(getProperty(1));
+
+
+
+getProperty(1).then(
+    function(data) {
+        console.log('Success', data.Item.email_id);
+        var email = data.Item.email_id;
+        console.log(email);
+
+    }).catch(function(err) {
+        console.log(err);
+    }
+);
+console.log(email);
+
 /** 
 let fetchOneByKey = function () {
     var params = {
