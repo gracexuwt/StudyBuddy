@@ -11,7 +11,13 @@ const taskTemplate = document.getElementById('task-template')
 const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
 const clearCompleteTaskButton = document.querySelector('[data-delete-task-button]')
-
+let awsConfig = {
+    "region": "us-east-1",
+    "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
+    "accessKeyId": "AKIARD6ATKRQDOIDNRP4", 
+    "secretAccessKey": "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"
+};
+AWS.config.update(awsConfig);
 
 const LOCAL_STOARGE_LIST_KEY = 'task.lists'
 const LOCAL_STOARGE_SELECTED_LIST_ID_KEY = 'task.selectedListID'
@@ -110,6 +116,7 @@ function render() {
         clearElement(tasksContainer)
         renderTasks(selectedList)
     }
+    writeToServer()
 }
 
 function renderLists(){
@@ -168,12 +175,62 @@ function createTask(name) {
 
 function readFromServer(){
 
+    
+    var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+    
+    function createParams(email){
+        const params = {
+            TableName: "StudyBuddy",
+            Key: {
+                "email_id": {S: email}
+            },
+        };
+        return params;
+    }
+    
+    
+    function getProperty(property){
+        params = createParams("healtoneforever@gmail.com");
+        return item = ddb.getItem(params).promise();
+    }
+    
+    
+    
+    getProperty(1).then(
+        function(data) {
+            console.log('Success', data.Item.email_id);
+            var email = data.Item.email_id;
+            console.log(email);
+    
+        }).catch(function(err) {
+            console.log(err);
+        }
+    );
 }
 
 function writeToServer(){
+    var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
-
+    var params = {
+        TableName: "StudyBuddy",
+        Item: {
+            "email_id": {S: "1@gmail.com"},
+            "listOfTasks": {L: [{S: "1"}]}
+        },
+        
+    };
+    
+    // Call DynamoDB to add the item to the table
+    ddb.putItem(params, function(err, data) {
+      if (err) {
+        console.log("Error", err);
+      } else {
+        console.log("Success", data);
+      }
+    });
 }
 
 
+
 render()
+
