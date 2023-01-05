@@ -13,6 +13,7 @@ const newTaskInput = document.querySelector('[data-new-task-input]')
 const clearCompleteTaskButton = document.querySelector('[data-delete-task-button]')
 const readToServerButton = document.querySelector('[read-task-button]')
 const writeToServerButton = document.querySelector('[write-task-button]')
+const emailAddressInputForm = document.querySelector('[storing-address-input]')
 
 
 let awsConfig = {
@@ -32,8 +33,8 @@ let selectedListID = localStorage.getItem(LOCAL_STOARGE_SELECTED_LIST_ID_KEY)
 
 listsContainer.addEventListener('click', e=> {
     if(e.target.tagName.toLowerCase() === 'li') {
-        selectedListID = e.target.dataset.listId
-        saveAndRender()
+        selectedListID = e.target.dataset.listId;
+        saveAndRender();
     }
 })
 
@@ -44,21 +45,32 @@ deleteListButton.addEventListener('click', e=>{
 })
 
 readToServerButton.addEventListener('click', e=>{
-    
+    if(emailAddressInputForm.value != null && emailAddressInputForm.value != ""){
+        readFromServer(emailAddressInputForm.value);
+    }
+    else{
+        // print a message that this can't be done
+    }
     
 })
 
 writeToServerButton.addEventListener('click', e=>{
-    console.log("ye");
-    writeToServer("testing123@gmail.com");
-    
+    if(emailAddressInputForm.value != null && emailAddressInputForm.value != ""){
+        writeToServer(emailAddressInputForm.value);
+    }
+    else{
+        // print a message that this can't be done
+    }
+})
+
+emailAddressInputForm.addEventListener('submit', e=>{
+    console.log(emailAddressInputForm.value)
 })
 
 //save the current list into the local storage
 function save(){
     localStorage.setItem(LOCAL_STOARGE_LIST_KEY, JSON.stringify(lists))
-    localStorage.setItem
-    (LOCAL_STOARGE_SELECTED_LIST_ID_KEY, selectedListID)
+    localStorage.setItem(LOCAL_STOARGE_SELECTED_LIST_ID_KEY, selectedListID)
 }
 
 
@@ -201,7 +213,6 @@ function readFromServer(email){
     
     
     function getProperty(){
-        params = createParams(email);
         // Call DynamoDB to get the todolist from table under the given email
         return item = ddb.getItem(params).promise();
     }
@@ -210,9 +221,11 @@ function readFromServer(email){
     
     getProperty().then(
         function(data) {
-            console.log('Success', data.Item.email_id);
-
-    
+            console.log('Success', data.Item);
+            
+            lists = convertToList(data.Item).listOfTasks;
+            console.log(lists);
+            saveAndRender();
         }).catch(function(err) {
             console.log(err);
         }
@@ -257,4 +270,3 @@ function convertToList(dbStructure){
 }
 
 render()
-
