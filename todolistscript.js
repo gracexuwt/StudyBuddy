@@ -49,8 +49,9 @@ readToServerButton.addEventListener('click', e=>{
 })
 
 writeToServerButton.addEventListener('click', e=>{
-    writeToServer("testing123@gmail.com");
     console.log("ye");
+    writeToServer("testing123@gmail.com");
+    
 })
 
 //save the current list into the local storage
@@ -210,8 +211,7 @@ function readFromServer(email){
     getProperty().then(
         function(data) {
             console.log('Success', data.Item.email_id);
-            var email = data.Item.email_id;
-            console.log(email);
+
     
         }).catch(function(err) {
             console.log(err);
