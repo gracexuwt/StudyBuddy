@@ -174,8 +174,6 @@ function createTask(name) {
 
 
 function readFromServer(){
-
-    
     var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
     
     function createParams(email){
@@ -189,14 +187,14 @@ function readFromServer(){
     }
     
     
-    function getProperty(property){
+    function getProperty(){
         params = createParams("healtoneforever@gmail.com");
         return item = ddb.getItem(params).promise();
     }
     
     
     
-    getProperty(1).then(
+    getProperty().then(
         function(data) {
             console.log('Success', data.Item.email_id);
             var email = data.Item.email_id;

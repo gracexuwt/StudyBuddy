@@ -584,7 +584,11 @@ button:focus, button:active {
     }
 }
 
-
+/*Save your todo list CSS*/
+.savetodo-title{
+    color: var(--gradient-right);
+    font-size: 1.5rem;
+}
 
 /*STOPWATCH CSS*/
 .stopwatch {
