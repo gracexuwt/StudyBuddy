@@ -34,7 +34,6 @@ getProperty(1).then(
         console.log('Success', data.Item.email_id);
         var email = data.Item.email_id;
         console.log(email);
-        saveAndRender();
 
     }).catch(function(err) {
         console.log(err);
