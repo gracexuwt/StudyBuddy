@@ -14,6 +14,7 @@ const clearCompleteTaskButton = document.querySelector('[data-delete-task-button
 const readToServerButton = document.querySelector('[read-task-button]')
 const writeToServerButton = document.querySelector('[write-task-button]')
 
+
 let awsConfig = {
     "region": "us-east-1",
     "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
@@ -43,12 +44,13 @@ deleteListButton.addEventListener('click', e=>{
 })
 
 readToServerButton.addEventListener('click', e=>{
+    
     readFromServer("testing123@gmail.com");
 })
 
 writeToServerButton.addEventListener('click', e=>{
     writeToServer("testing123@gmail.com");
-    console.log("ye")
+    console.log("ye");
 })
 
 //save the current list into the local storage
