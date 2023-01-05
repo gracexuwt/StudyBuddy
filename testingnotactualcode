@@ -1,0 +1,8 @@
+// [ { "L" : [ { "S" : "a" }, { "S" : "b" } ] } ]
+var testarray = ["a", "b", "c"]
+const jsonObj = {}
+for (let item of array) {
+    jsonObj.add['S' + item] = item;
+}
+testarray.forEach((v,i) => jsonObj['S'] = v)
+console.log(jsonObj)

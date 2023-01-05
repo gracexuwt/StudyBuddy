@@ -11,6 +11,9 @@ const taskTemplate = document.getElementById('task-template')
 const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
 const clearCompleteTaskButton = document.querySelector('[data-delete-task-button]')
+const readToServerButton = document.querySelector('[read-task-button]')
+const writeToServerButton = document.querySelector('[write-task-button]')
+
 let awsConfig = {
     "region": "us-east-1",
     "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
@@ -39,6 +42,14 @@ deleteListButton.addEventListener('click', e=>{
     saveAndRender();
 })
 
+readToServerButton.addEventListener('click', e=>{
+    
+})
+
+writeToServerButton.addEventListener('click', e=>{
+    writeToServer("testing123@gmail.com");
+    console.log("ye")
+})
 
 //save the current list into the local storage
 function save(){
@@ -116,7 +127,7 @@ function render() {
         clearElement(tasksContainer)
         renderTasks(selectedList)
     }
-    writeToServer()
+    
 }
 
 function renderLists(){
@@ -173,22 +184,22 @@ function createTask(name) {
 }
 
 
-function readFromServer(){
+function readFromServer(email){
+    //create new DynamoDB
     var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
     
-    function createParams(email){
+    //create the parameters and keys to pass into the getItem functions later
         const params = {
             TableName: "StudyBuddy",
             Key: {
                 "email_id": {S: email}
             },
         };
-        return params;
-    }
     
     
     function getProperty(){
-        params = createParams("healtoneforever@gmail.com");
+        params = createParams(email);
+        // Call DynamoDB to get the todolist from table under the given email
         return item = ddb.getItem(params).promise();
     }
     
@@ -206,19 +217,20 @@ function readFromServer(){
     );
 }
 
-function writeToServer(){
+function writeToServer(email){
+    //create new DynamoDB
     var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-
+    //create the parameters and keys to pass into the getItem functions later
     var params = {
         TableName: "StudyBuddy",
         Item: {
-            "email_id": {S: "1@gmail.com"},
-            "listOfTasks": {L: [{S: "1"}]}
+            "email_id": {S: email},
+            "listOfTasks": {L: convertToStructure(lists)}
+            //AWS.DynamoDB.Converter.marshall(lists)
         },
-        
     };
     
-    // Call DynamoDB to add the item to the table
+    // Call DynamoDB to add the todo list to the table under the given email
     ddb.putItem(params, function(err, data) {
       if (err) {
         console.log("Error", err);
@@ -226,9 +238,21 @@ function writeToServer(){
         console.log("Success", data);
       }
     });
+    console.log(convertToStructure(lists))
+    
 }
 
+function convertToStructure(todolist){
+    let marshalledlist = [];
+    for(const i in todolist){
+        marshalledlist.push({M: AWS.DynamoDB.Converter.marshall(todolist[i])});
+    }
+    return marshalledlist;
+}
 
+function convertToList(dbStructure){
+    return AWS.DynamoDB.Converter.unmarshall(dbStructure);
+}
 
 render()
 

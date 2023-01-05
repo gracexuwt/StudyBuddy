@@ -23,7 +23,7 @@ function createParams(email){
 var email;
 
 function getProperty(property){
-    params = createParams("healtoneforever@gmail.com");
+    params = createParams("testing123@gmail.com");
     return item = ddb.getItem(params).promise();
 }
 
@@ -31,16 +31,37 @@ function getProperty(property){
 
 getProperty(1).then(
     function(data) {
-        console.log('Success', data.Item.email_id);
-        var email = data.Item.email_id;
-        console.log(email);
-
+        console.log('Success', data.Item.listOfTasks);
+        const unmarshalled = AWS.DynamoDB.Converter.unmarshall(data.Item);
+        const listOfLists = unmarshalled.listOfTasks
+        console.log(listOfLists[0]);
+        /*
+        for (const element in array){
+            console.log(element);
+        }
+        */
     }).catch(function(err) {
         console.log(err);
     }
 );
 console.log(email);
- 
+var unmarshalled = AWS.DynamoDB.Converter.unmarshall({
+    string: {S: 'foo'},
+    list: {L: [{S: 'fizz'}, {S: 'buzz'}, {S: 'pop'}]},
+    map: {
+      M: {
+        nestedMap: {
+          M: {
+            key: {S: 'value'}
+          }
+        }
+      }
+    },
+    number: {N: '123'},
+    nullValue: {NULL: true},
+    boolValue: {BOOL: true}
+  });
+  console.log(unmarshalled);
 /** 
 let fetchOneByKey = function () {
     var params = {

@@ -15,7 +15,7 @@ var params = {
     TableName: "StudyBuddy",
     Item: {
         "email_id": {S: "autoemailsender111@gmail.com"},
-        "listOfTasks": {L: [{S: "hi there"}]}
+        "listOfTasks": {L: [{S: "HI"}]}
     },
     
 };
