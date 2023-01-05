@@ -43,7 +43,7 @@ deleteListButton.addEventListener('click', e=>{
 })
 
 readToServerButton.addEventListener('click', e=>{
-    
+    readFromServer("testing123@gmail.com");
 })
 
 writeToServerButton.addEventListener('click', e=>{
@@ -198,7 +198,6 @@ function readFromServer(email){
     
     
     function getProperty(){
-        params = createParams(email);
         // Call DynamoDB to get the todolist from table under the given email
         return item = ddb.getItem(params).promise();
     }
@@ -207,10 +206,11 @@ function readFromServer(email){
     
     getProperty().then(
         function(data) {
-            console.log('Success', data.Item.email_id);
-            var email = data.Item.email_id;
-            console.log(email);
-    
+            console.log('Success', data.Item);
+            
+            lists = convertToList(data.Item).listOfTasks;
+            console.log(lists);
+            saveAndRender();
         }).catch(function(err) {
             console.log(err);
         }
