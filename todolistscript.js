@@ -18,8 +18,14 @@ const LOCAL_STOARGE_SELECTED_LIST_ID_KEY = 'task.selectedListID'
 let lists = JSON.parse(localStorage.getItem(LOCAL_STOARGE_LIST_KEY)) || []
 let selectedListID = localStorage.getItem(LOCAL_STOARGE_SELECTED_LIST_ID_KEY)
 
-
-
+var AWS = require("aws-sdk");
+let awsConfig = {
+    "region": "us-east-1",
+    "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
+    "accessKeyId": "AKIARD6ATKRQDOIDNRP4", 
+    "secretAccessKey": "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"
+};
+AWS.config.update(awsConfig);
 
 
 listsContainer.addEventListener('click', e=> {
@@ -170,6 +176,40 @@ function createTask(name) {
 
 function readFromServer(){
 
+    var ddb = new DynamoDB({apiVersion: '2012-08-10'});
+
+    function createParams(email){
+        const params = {
+            TableName: "StudyBuddy",
+            Key: {
+                "email_id": {S: email}
+            },
+        };
+        return params;
+    }
+    
+    
+    var email;
+    
+    function getProperty(property){
+        params = createParams("healtoneforever@gmail.com");
+        return item = ddb.getItem(params).promise();
+    }
+    
+    
+    
+    getProperty(1).then(
+        function(data) {
+            console.log('Success', data.Item.email_id);
+            var email = data.Item.email_id;
+            console.log(email);
+            saveAndRender();
+    
+        }).catch(function(err) {
+            console.log(err);
+        }
+    );
+    console.log(email);
 }
 
 function writeToServer(){
@@ -179,3 +219,4 @@ function writeToServer(){
 
 
 render()
+readFromServer()

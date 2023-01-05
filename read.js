@@ -41,7 +41,7 @@ getProperty(1).then(
     }
 );
 console.log(email);
-
+ 
 /** 
 let fetchOneByKey = function () {
     var params = {
