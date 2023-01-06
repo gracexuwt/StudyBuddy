@@ -205,7 +205,7 @@ body{
 .new {
     background: transparent;
     color: var(--main-font-color);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border-color: var(--todo-list-left);
     font-size: inherit;
     padding-left: 1rem;
@@ -585,9 +585,47 @@ button:focus, button:active {
 }
 
 /*Save your todo list CSS*/
+.savetodo{
+    padding-top: 2rem;
+    padding-bottom: 5rem; 
+}
 .savetodo-title{
     color: var(--gradient-right);
     font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.storing-address{
+    background: white;
+    color: black;
+    border-radius: 0.5rem;
+    border-color: transparent;
+    font-size: inherit;
+    padding-left: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-right: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.read-and-write-btn{
+    padding-top: 0.3rem;
+    border-top: 1rem;
+    border-bottom: 1rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    align-items: center;
+    font-size: 1.2rem;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.read-and-write-btn:hover{
+    color: var(--gradient-right);
+    cursor: pointer;
 }
 
 /*STOPWATCH CSS*/
