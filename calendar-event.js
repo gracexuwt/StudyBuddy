@@ -5,6 +5,11 @@ var cal = {
     data : null, // events for selected period
     sDay : 0, sMth : 0, sYear : 0, // selected day month year
   
+    // (A2) MONTHS & DAY NAMES
+    monthss : [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ],
   
     // (A3) HTML ELEMENTS
     hMth : null, hYear : null, // month/year selector
@@ -30,7 +35,7 @@ var cal = {
       for (let i=0; i<12; i++) {
         let opt = document.createElement("option");
         opt.value = i;
-        opt.innerHTML = cal.months[i];
+        opt.innerHTML = cal.monthss[i];
         if (i==nowMth) { opt.selected = true; }
         cal.hMth.appendChild(opt);
       }
