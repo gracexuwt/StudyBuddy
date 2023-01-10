@@ -219,7 +219,7 @@
     </div>
     </center>
 
-
+    <div id="calWrap"></div>
     <center>
     <div class="calendar" id="schedule">
       <h1 style="color:white">Event Calendar</h1>
@@ -247,6 +247,17 @@
       </div>
     </div>
   </center>
+  <dialog id="calForm"><form method="dialog">
+    <div id="evtClose">X</div>
+    <h2>CALENDAR EVENT</h2>
+    <label>Date</label>
+    <input type="text" id="evtDate" readonly>
+    <label>Details</label>
+    <textarea id="evtTxt" required></textarea>
+  
+    <input id="evtDel" type="button" value="Delete">
+    <input id="evtSave" type="submit" value="Save">
+  </form></dialog>
     <!--loading scripts-->
     
     <script src="menu.js"></script>
