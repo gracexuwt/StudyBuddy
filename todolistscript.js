@@ -49,7 +49,7 @@ readToServerButton.addEventListener('click', e=>{
         readFromServer(emailAddressInputForm.value);
     }
     else{
-        // print a message that this can't be done
+        console.log("no input")// print a message that this can't be done
     }
     
 })
@@ -59,7 +59,7 @@ writeToServerButton.addEventListener('click', e=>{
         writeToServer(emailAddressInputForm.value);
     }
     else{
-        // print a message that this can't be done
+        console.log("no input")// print a message that this can't be done
     }
 })
 
