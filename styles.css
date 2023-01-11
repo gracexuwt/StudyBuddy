@@ -658,102 +658,14 @@ button:focus, button:active {
 
 
 /*CALENDAR CSS*/
-.wrapper{
-    width: 65rem;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-  }
-  .wrapper header{
-    display: flex;
-    align-items: center;
-    padding: 25px 30px 10px;
-    justify-content: space-between;
-  }
-  header .icons{
-    display: flex;
-  }
-  header .icons span{
-    height: 3.5rem;
-    width: 3.5rem;
-    margin: 0 1px;
-    cursor: pointer;
-    color: #878787;
-    text-align: center;
-    line-height: 38px;
-    font-size: 1.9rem;
-    user-select: none;
-    border-radius: 50%;
-  }
-  .icons span:last-child{
-    margin-right: -10px;
-  }
-  header .icons span:hover{
-    background: #f2f2f2;
-  }
-  header .current-date{
-    font-size: 3rem;
-  }
-  .calendar{
-    padding: 20px;
-  }
-  .calendar ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    text-align: center;
-  }
-  .calendar .days{
-    margin-bottom: 4.5rem;
-  }
-  .calendar li{
-    color: #333;
-    width: calc(100% / 7);
-    font-size: 1.2rem;
-  }
-  .calendar .weeks li{
-    font-weight: 500;
-    cursor: default;
-  }
-  .calendar .days li{
-    z-index: 1;
-    cursor: pointer;
-    position: relative;
-    margin-top: 5.5rem;
-  }
-  .days li.inactive{
-    color: #aaa;
-  }
-  .days li.active{
-    color: #fff;
-  }
-  .days li::before{
-    position: absolute;
-    content: "";
-    left: 50%;
-    top: 50%;
-    height: 4rem;
-    width: 4rem;
-    z-index: -1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .days li.active::before{
-    background: #9B59B6;
-  }
-  .days li:not(.active):hover::before{
-    background: #f2f2f2;
-  }
 
-  .hide { display: none !important; }
-  
-  /* (B) PERIOD SELECTOR */
   #calPeriod {
     padding: 15px;
-    background: var(--bg-color-a);
+    background-color: var(--gradient-left);
+    background-image: linear-gradient(to right, var(--gradient-left) 0%, var(--gradient-right) 100%);
   }
   #calPeriod input, #calPeriod select {
-    font-size: 24px;
+    font-size: 20px;
     border: 0; outline: none;
     color: #fff; background: 0;
     cursor: pointer;
@@ -763,21 +675,17 @@ button:focus, button:active {
     width: 100px;
     margin-left: 10px;
   }
-  
-  /* (C) CALENDAR */
-  /* (C1) SHARED */
+
   .calHead, .calRow { display: flex; }
   .calCell { background: white;
     width: 14.2857%; }
   
-  /* (C2) HEADER - DAY NAMES */
   .calHead .calCell {
     color: #fff; background: var(--bg-color-b);
     font-weight: 700; text-align: center;
     padding: 15px 0;
   }
   
-  /* (C3) BODY - INDIVIDUAL DAYS */
   .calBlank { background: #eee; }
   .calToday { background: #feffd3; }
   .calToday .cellDate { color: #ff9b9b; }
@@ -798,7 +706,6 @@ button:focus, button:active {
     cursor: pointer;
   }
   
-  /* (D) EVENT FORM */
   #calForm {
     position: absolute; top: 0; left: 0; z-index: 999;
     width: 100vw; height: 100%; min-height: 100vh;
@@ -819,7 +726,7 @@ button:focus, button:active {
     position: absolute;
     top: 0; right: 0;
     padding: 10px;
-    color: #b12020;
+    color: #F76BFB;
     font-size: 28px;
     font-weight: 700;
     cursor: pointer;
@@ -847,18 +754,4 @@ button:focus, button:active {
     border: 0; padding: 10px; margin: 10px 2px 0 0;
     color: #fff; background: var(--bg-color-c);
     cursor: pointer;
-  }
-  
-  /* (X) DOES NOT MATTER */
-  #code-boxx {
-    font-weight: 600;
-    margin-top: 30px;
-  }
-  #code-boxx a {
-    display: inline-block;
-    border: 0;
-    padding: 5px;
-    text-decoration: none;
-    background: #b90a0a;
-    color: #fff;
   }
