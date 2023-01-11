@@ -219,34 +219,22 @@
     </div>
     </center>
 
-
-    <center>
-    <div class="calendar" id="schedule">
-      <h1 style="color:white">Event Calendar</h1>
-      <p><br></p>
-      <div class="wrapper">
-        <header>
-          <p class="current-date"></p>
-          <div class="icons">
-            <span class= "material-symbols-rounded" id="prev">chevron_left</span>
-            <span class= "material-symbols-rounded" id="next">chevron_right</span>
-          </div>
-        </header>
-        <div class="calendar">
-          <ul class="weeks">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-          </ul>
-          <ul class="days"></ul>
-        </div>
-      </div>
+    <div id="calPeriod">
+      <select id="calMonth"></select>
+      <input type="number" id="calYear">
     </div>
-  </center>
+    <div id="calWrap"></div>
+  <dialog id="calForm"><form method="dialog">
+    <div id="evtClose">X</div>
+    <h2>CALENDAR EVENT</h2>
+    <label>Date</label>
+    <input type="text" id="evtDate" readonly>
+    <label>Details</label>
+    <textarea id="evtTxt" required></textarea>
+  
+    <input id="evtDel" type="button" value="Delete">
+    <input id="evtSave" type="submit" value="Save">
+  </form></dialog>
     <!--loading scripts-->
     
     <script src="menu.js"></script>
@@ -256,6 +244,7 @@
     <script src="todolistscript.js"></script>
     
     <script src="calendar.js"></script>
+    <script src="calendar-event.js"></script>
 
 </body>
 </html>
