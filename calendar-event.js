@@ -1,26 +1,20 @@
 var cal = {
-    // (A) PROPERTIES
-    // (A1) FLAGS & DATA
     sMon : false, // week start on monday
     data : null, // events for selected period
     sDay : 0, sMth : 0, sYear : 0, // selected day month year
   
-    // (A2) MONTHS & DAY NAMES
     months : [
       "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ],
     days : ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"],
-  
-    // (A3) HTML ELEMENTS
+
     hMth : null, hYear : null, // month/year selector
     hWrap : null, // calendar wrapper
     hFormWrap : null, hForm : null, // event form
     hfDate : null, hfTxt : null, hfDel : null, // form fields
   
-    // (B) INIT CALENDAR
     init : () => {
-      // (B1) GET HTML ELEMENTS
       cal.hMth = document.getElementById("calMonth");
       cal.hYear = document.getElementById("calYear");
       cal.hWrap = document.getElementById("calWrap");
@@ -30,7 +24,7 @@ var cal = {
       cal.hfTxt = document.getElementById("evtTxt");
       cal.hfDel = document.getElementById("evtDel");
   
-      // (B2) APPEND MONTHS/YEAR
+      // append month and year
       let now = new Date(), nowMth = now.getMonth();
       cal.hYear.value = parseInt(now.getFullYear());
       for (let i=0; i<12; i++) {
@@ -40,24 +34,18 @@ var cal = {
         if (i==nowMth) { opt.selected = true; }
         cal.hMth.appendChild(opt);
       }
-  
-      // (B3) ATTACH CONTROLS
+
       cal.hMth.onchange = cal.draw;
       cal.hYear.onchange = cal.draw;
       cal.hForm.onsubmit = cal.save;
       document.getElementById("evtClose").onclick = () => cal.hFormWrap.close();
       cal.hfDel.onclick = cal.del;
   
-      // (B4) START - DRAW CALENDAR
       if (cal.sMon) { cal.days.push(cal.days.shift()); }
       cal.draw();
     },
-  
-    // (C) DRAW CALENDAR FOR SELECTED MONTH
+
     draw : () => {
-      // (C1) DAYS IN MONTH + START/END DAYS
-      // note - jan is 0 & dec is 11
-      // note - sun is 0 & sat is 6
       cal.sMth = parseInt(cal.hMth.value); // selected month
       cal.sYear = parseInt(cal.hYear.value); // selected year
       let daysInMth = new Date(cal.sYear, cal.sMth+1, 0).getDate(), // number of days in selected month
@@ -67,16 +55,13 @@ var cal = {
           nowMth = now.getMonth(), // current month
           nowYear = parseInt(now.getFullYear()), // current year
           nowDay = cal.sMth==nowMth && cal.sYear==nowYear ? now.getDate() : null ;
-  
-      // (C2) LOAD DATA FROM LOCALSTORAGE
+
       cal.data = localStorage.getItem("cal-" + cal.sMth + "-" + cal.sYear);
       if (cal.data==null) {
         localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, "{}");
         cal.data = {};
       } else { cal.data = JSON.parse(cal.data); }
-  
-      // (C3) DRAWING CALCULATIONS
-      // (C3-1) BLANK SQUARES BEFORE START OF MONTH
+
       let squares = [];
       if (cal.sMon && startDay != 1) {
         let blanks = startDay==0 ? 7 : startDay ;
@@ -85,11 +70,9 @@ var cal = {
       if (!cal.sMon && startDay != 0) {
         for (let i=0; i<startDay; i++) { squares.push("b"); }
       }
-  
-      // (C3-2) DAYS OF THE MONTH
+
       for (let i=1; i<=daysInMth; i++) { squares.push(i); }
-  
-      // (C3-3) BLANK SQUARES AFTER END OF MONTH
+
       if (cal.sMon && endDay != 0) {
         let blanks = endDay==6 ? 1 : 7-endDay;
         for (let i=0; i<blanks; i++) { squares.push("b"); }
@@ -98,14 +81,12 @@ var cal = {
         let blanks = endDay==0 ? 6 : 6-endDay;
         for (let i=0; i<blanks; i++) { squares.push("b"); }
       }
-  
-      // (C4) "RESET" CALENDAR
+
       cal.hWrap.innerHTML = `<div class="calHead"></div>
       <div class="calBody">
         <div class="calRow"></div>
       </div>`;
   
-      // (C5) CALENDAR HEADER - DAY NAMES
       wrap = cal.hWrap.querySelector(".calHead");
       for (let d of cal.days) {
         let cell = document.createElement("div");
@@ -113,12 +94,10 @@ var cal = {
         cell.innerHTML = d;
         wrap.appendChild(cell);
       }
-  
-      // (C6) CALENDAR BODY - INDIVIDUAL DAYS & EVENTS
       wrap = cal.hWrap.querySelector(".calBody");
       row = cal.hWrap.querySelector(".calRow");
       for (let i=0; i<squares.length; i++) {
-        // (C6-1) GENERATE CELL
+        // Generate cell
         let cell = document.createElement("div");
         cell.className = "calCell";
         if (nowDay==squares[i]) { cell.classList.add("calToday"); }
@@ -132,7 +111,7 @@ var cal = {
         }
         row.appendChild(cell);
   
-        // (C6-2) NEXT ROW
+        // Next Row
         if (i!=(squares.length-1) && i!=0 && (i+1)%7==0) {
           row = document.createElement("div");
           row.className = "calRow";
@@ -141,7 +120,7 @@ var cal = {
       }
     },
   
-    // (D) SHOW EDIT EVENT DOCKET FOR SELECTED DAY
+    // Show event editor
     show : cell => {
       cal.hForm.reset();
       cal.sDay = cell.querySelector(".cellDate").innerHTML;
@@ -153,7 +132,7 @@ var cal = {
       cal.hFormWrap.show();
     },
   
-    // (E) SAVE EVENT
+    // Save event
     save : () => {
       cal.data[cal.sDay] = cal.hfTxt.value;
       localStorage.setItem(`cal-${cal.sMth}-${cal.sYear}`, JSON.stringify(cal.data));
@@ -162,7 +141,7 @@ var cal = {
       return false;
     },
   
-    // (F) DELETE EVENT FOR SELECTED DATE
+    // Delete event
     del : () => { if (confirm("Delete event?")) {
       delete cal.data[cal.sDay];
       localStorage.setItem(`cal-${cal.sMth}-${cal.sYear}`, JSON.stringify(cal.data));

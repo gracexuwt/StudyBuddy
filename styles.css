@@ -767,7 +767,8 @@ button:focus, button:active {
   /* (C) CALENDAR */
   /* (C1) SHARED */
   .calHead, .calRow { display: flex; }
-  .calCell { width: 14.2857%; }
+  .calCell { background: white;
+    width: 14.2857%; }
   
   /* (C2) HEADER - DAY NAMES */
   .calHead .calCell {
