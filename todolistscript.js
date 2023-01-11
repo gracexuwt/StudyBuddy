@@ -45,8 +45,10 @@ deleteListButton.addEventListener('click', e=>{
 })
 
 readToServerButton.addEventListener('click', e=>{
+    e.preventDefault()
     if(emailAddressInputForm.value != null && emailAddressInputForm.value != ""){
         readFromServer(emailAddressInputForm.value);
+        console.log("===================================================================")
     }
     else{
         console.log("no input")// print a message that this can't be done
@@ -55,8 +57,10 @@ readToServerButton.addEventListener('click', e=>{
 })
 
 writeToServerButton.addEventListener('click', e=>{
+    e.preventDefault()
     if(emailAddressInputForm.value != null && emailAddressInputForm.value != ""){
         writeToServer(emailAddressInputForm.value);
+        console.log("write complete")
     }
     else{
         console.log("no input")// print a message that this can't be done
@@ -64,6 +68,7 @@ writeToServerButton.addEventListener('click', e=>{
 })
 
 emailAddressInputForm.addEventListener('submit', e=>{
+    e.preventDefault()
     console.log(emailAddressInputForm.value)
 })
 
@@ -211,22 +216,26 @@ function readFromServer(email){
             },
         };
     
-    
+     
     function getProperty(){
         // Call DynamoDB to get the todolist from table under the given email
         return item = ddb.getItem(params).promise();
     }
     
     
+    console.log("Got here")
     
     getProperty().then(
+        
         function(data) {
+            
             console.log('Success', data.Item);
             
             lists = convertToList(data.Item).listOfTasks;
             console.log(lists);
             saveAndRender();
         }).catch(function(err) {
+            
             console.log(err);
         }
     );
