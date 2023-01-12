@@ -9,5 +9,6 @@
 ###### 2. Stopwatch: Keeps track of time for doing a presentation, writing a quiz, etc.
 ###### 3. To-do list: Keeps track of remaining tasks and task-lists organized by category. Able to add/delete tasks.
 ###### 4. Event Calendar: Keeps track of daily events. Able to add/edit/delete events.
+###### References: (pomodoro timer)https://freshman.tech/pomodoro-timer/, (event calendar)https://codepen.io/code-boxx/pen/NWzqazY
 <br/>
 <br/>
