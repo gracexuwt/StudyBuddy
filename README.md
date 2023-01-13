@@ -1,6 +1,6 @@
 # StudyBuddy
 ## Study smart with your best study buddy
-###### Contributor(s): Nina Zhang, Grace Xu (gwxu)
+###### Contributor(s): Grace Xu (gwxu), Nina Zhang, Sophia Xu (graphic designer)
 ###### Date (Latest version): Jan 11, 2023
 ###### Program used in development: JavaScript, HTML5, CSS
 ###### Purpose of project: To develop a cute studying platform with appropriate tools to help learners be productive and motivated
