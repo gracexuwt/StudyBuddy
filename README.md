@@ -1,6 +1,6 @@
 # StudyBuddy
 ## Study smart with your best study buddy
-###### Contributor(s): 
+###### Contributor(s): Nina Zhang, Grace Xu (gwxu)
 ###### Date (Latest version): Jan 11, 2023
 ###### Program used in development: JavaScript, HTML5, CSS
 ###### Purpose of project: To develop a cute studying platform with appropriate tools to help learners be productive and motivated
@@ -12,3 +12,11 @@
 ###### References: (pomodoro timer)https://freshman.tech/pomodoro-timer/, (event calendar)https://codepen.io/code-boxx/pen/NWzqazY
 <br/>
 <br/>
+Website URL:
+<br/>
+Website screenshots:
+<br/>
+
+![image](https://user-images.githubusercontent.com/92956740/212256745-998fb880-2709-4438-a949-21d240d7d400.png)
+![image](https://user-images.githubusercontent.com/92956740/212257049-677a177d-758e-480e-b0c8-ae8435eccb1e.png)
+![image](https://user-images.githubusercontent.com/92956740/212257299-3c718a00-1529-4319-80cd-5ff3cc73f64a.png)
