@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <!--important script do not remove-->
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1288.0.min.js"></script>
+    <style>
+      img {
+        width: 40%;
+        position:absolute;
+        top:0%;
+        left:50%;
+      }
+      </style>
 </head>
 <body>
     <!-- Navigation bar section -->
@@ -37,6 +45,7 @@
         </div>
     </nav>
     <!--Hero section, also the timer secion-->
+    <img src="starry.png" alt="Starry the StudyBuddy">
     <div class="hero" id="timers">
         <div class="hero__container">
             <p class="hero__description">
@@ -219,7 +228,7 @@
     </div>
     </center>
 
-   <center><h1 style = "color: white">Event Calendar</h1> 
+   <center><h1 style = "color: white">Event Calendar</h1> </center>
    <p><br></p>
     <div id="calPeriod">
       <select id="calMonth"></select>
@@ -237,8 +246,6 @@
     <input id="evtDel" type="button" value="Delete">
     <input id="evtSave" type="submit" value="Save">
   </form></dialog>
-</center>
-
     <!--loading scripts-->
     
     <script src="menu.js"></script>
