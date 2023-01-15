@@ -7,7 +7,7 @@
 ###### Instructions: Enter a username and password to save progress.
 ###### 1. Pomodoro Timer: Study 25 minutes. After 25 minutes, the timer would switch to break mode for 5 minutes.
 ###### 2. Stopwatch: Keeps track of time for doing a presentation, writing a quiz, etc.
-###### 3. To-do list: Keeps track of remaining tasks and task-lists organized by category. Able to add/delete tasks.
+###### 3. To-do list: Keeps track of remaining tasks and task-lists organized by category. Able to add/delete tasks. Tasks can be stored locally and to AWS cloud by    entering in user email.
 ###### 4. Event Calendar: Keeps track of daily events. Able to add/edit/delete events.
 ###### References: (pomodoro timer)https://freshman.tech/pomodoro-timer/, (event calendar)https://codepen.io/code-boxx/pen/NWzqazY
 <br/>
